@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c49e13fc1d5a28b4d8b94a2a3cb66375, type: 3}
-  m_Name: Lighter
+  m_Name: Flashlight
   m_EditorClassIdentifier: 
-  ItemName: Lighter
-  ItemIcon: {fileID: 21300000, guid: ac92fc50086d6a245b003da545b01ae7, type: 3}
-  ItemPrefab: {fileID: 6920443030030939329, guid: a465e5e8825ac8146b12daada2c0fdbe, type: 3}
+  ItemName: Flashlight
+  ItemIcon: {fileID: 0}
+  ItemPrefab: {fileID: 3816110268135884424, guid: 3572ed3f596c8cb47952039cca8aeea9, type: 3}
   ItemSound_Pickup: {fileID: 8300000, guid: 18ead82d1349e9d4ebda04d38248429c, type: 3}
   ItemSound_Drop: {fileID: 8300000, guid: 282031aa08ff09f4597f2e104252aeda, type: 3}
   ItemSound_Use: {fileID: 8300000, guid: 18ead82d1349e9d4ebda04d38248429c, type: 3}
