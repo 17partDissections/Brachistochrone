@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49e13fc1d5a28b4d8b94a2a3cb66375, type: 3}
+  m_Name: Flashlight
+  m_EditorClassIdentifier: 
+  ItemName: Flashlight
+  ItemIcon: {fileID: 21300000, guid: 78ea4faa4ecdef04da0b897c32ac4926, type: 3}
+  ItemPrefab: {fileID: 3816110268135884424, guid: 3572ed3f596c8cb47952039cca8aeea9, type: 3}
+  ItemSound_Pickup: {fileID: 8300000, guid: 18ead82d1349e9d4ebda04d38248429c, type: 3}
+  ItemSound_Drop: {fileID: 8300000, guid: 282031aa08ff09f4597f2e104252aeda, type: 3}
+  ItemSound_Use: {fileID: 8300000, guid: 18ead82d1349e9d4ebda04d38248429c, type: 3}

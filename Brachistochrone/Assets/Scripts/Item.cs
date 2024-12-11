@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Item")]
 public class Item : ScriptableObject
 {
     [Header("Name & Icon")]
     public string ItemName;
+    public string ItemDescription;
     public Sprite ItemIcon;
     [Header("Prefab")]
     public GameObject ItemPrefab;
