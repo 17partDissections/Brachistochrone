@@ -2,6 +2,7 @@ using System;
 using Zenject;
 using UnityEngine;
 using InputSystem;
+using System.Collections;
 
 public class GameSceneInstaller : MonoInstaller
 {
@@ -10,6 +11,7 @@ public class GameSceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        BindGrid();
         BindLanguage();
         BindAudioHandler();
         BindEventBus();
@@ -21,9 +23,30 @@ public class GameSceneInstaller : MonoInstaller
 
     public override void Start()
     {
+        Container.Resolve<SceneGrid>().CreateNode(200,200);
         Container.Resolve<InputSystem_Actions>().Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        StartCoroutine(QWERTYU());
+    }
+    private IEnumerator QWERTYU()
+    {
+        yield return new WaitForSeconds(3f);
+        int randomX = UnityEngine.Random.Range(0, 4000);
+        int resultX = UnityEngine.Mathf.FloorToInt(randomX / 20);
+        int randomZ = UnityEngine.Random.Range(0, 4000);
+        int resultZ = UnityEngine.Mathf.FloorToInt(randomZ / 20);
+        Debug.Log($"randomX: {randomX}, randomZ: {randomZ}");
+        Container.Resolve<SceneGrid>().GetNode($"x{resultX}z{resultZ}");
+
+    }
+    private void BindGrid()
+    {
+        Container
+            .Bind<SceneGrid>()
+            .FromNew()
+            .AsSingle()
+            .NonLazy();
     }
     private void BindLanguage()
     {

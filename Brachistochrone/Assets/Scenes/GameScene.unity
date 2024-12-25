@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5305632081355343949, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
       propertyPath: m_Name
-      value: WallWithDoor
+      value: StartRoomDoor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2338,7 +2338,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 1172bca9621e73b41872a83342b7d200, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 7346c96840abdfc48acac2c32c150d64, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &233435752
 GameObject:
@@ -9847,6 +9847,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.0297647, y: 2.9944706, z: 0.46222654}
   m_Center: {x: 0.00000011920928, y: 1.4111781, z: 0.00000017136335}
+--- !u!114 &1366404459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4649646790491694214, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
+  m_PrefabInstance: {fileID: 55333980}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea4c6bf623bcf1488dff01002c0d5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1366946585
 GameObject:
   m_ObjectHideFlags: 0
@@ -20421,12 +20432,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40306c3b8f1298e4a8d82e09d1cf69d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startRoomDoor: {fileID: 1308770216}
+  _startRoomDoor: {fileID: 1366404459}
   _rooms:
   - {fileID: 7100330710211325633, guid: 4e14475d1b3607640b8830b5cc8bffe6, type: 3}
   - {fileID: 262139999811175116, guid: 56989491cc2c840488a42930c714dd83, type: 3}
   - {fileID: 7031861512041792990, guid: e8fa5cde4bf34d84bb423eae86b02b07, type: 3}
   - {fileID: 8138973726973206611, guid: eb1b01ac8da77f34cb54efe3868419db, type: 3}
+  - {fileID: 8138973726973206611, guid: 9d0e20dcde0085645be8355d0af31cbb, type: 3}
   _doors: []
 --- !u!4 &2569156116762103306
 Transform:
@@ -24171,6 +24183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 238985402208095974}
     m_Modifications:
+    - target: {fileID: 416440514876320491, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2479795282996108235, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.25
@@ -24214,6 +24230,14 @@ PrefabInstance:
     - target: {fileID: 5305632081355343949, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
       propertyPath: m_Name
       value: WallWithDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305632081355343949, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849384733672140618, guid: 9365ed067f7329b44959ace2ca9cdc8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30113,8 +30137,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 7617671096430114216}
-  _installerPrefabs:
-  - {fileID: 255917834267422231, guid: 3e56528dc07c0cd4580b58637a1d77f1, type: 3}
+  _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
     m_PersistentCalls:
@@ -31399,7 +31422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &7127322883051130963
 MeshCollider:
   m_ObjectHideFlags: 0

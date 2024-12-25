@@ -290,6 +290,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _doorLeft: {fileID: 2617632250468463846}
   _doorRight: {fileID: 1239360015694112170}
+  _defaultDoorLeftPosition: {x: 0, y: 0, z: 0}
+  _defaultDoorRightPosition: {x: 0, y: 0, z: 0}
+  _changedDoorLeftPosition: {x: 0, y: 0, z: 0}
+  _changedDoorRightPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5663633359048769293
 GameObject:
   m_ObjectHideFlags: 0

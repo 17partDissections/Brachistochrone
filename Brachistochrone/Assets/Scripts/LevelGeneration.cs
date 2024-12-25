@@ -4,27 +4,30 @@ using Zenject;
 
 public class LevelGeneration : MonoBehaviour
 {
+    private EventBus _bus;
     [SerializeField] private Door _startRoomDoor;
     [SerializeField] private List<Room> _rooms;
     [SerializeField] private List<Door> _doors = new List<Door>();
 
-    private int qwer;
-
     [Inject] private void Construct(EventBus bus)
     {
-        bus.DoorOpened += GenerateRoom;
+        _bus = bus;
+        _bus.DoorOpened += GenerateRoom;
+        _startRoomDoor.Init(_bus);
         _doors.Add(_startRoomDoor);
-        GenerateRoom();
-
+        //GenerateRoom();
     }
 
     private void GenerateRoom()
     {
-        var rarity = Random.Range(0, 85);
-        if (CheckRoomRarity(rarity, 0, 85, RoomType.Common)) { }
-        else if (CheckRoomRarity(rarity, 85, 95, RoomType.Rare)) { }
-        else if (CheckRoomRarity(rarity, 85, 95, RoomType.Plot)) { }
-        //Debug.Log("rarity: " + rarity);
+        for (int i = 0; i < 2; i++)
+        {
+            var rarity = Random.Range(0, 85);
+            if (CheckRoomRarity(rarity, 0, 85, RoomType.Common)) { }
+            else if (CheckRoomRarity(rarity, 85, 95, RoomType.Rare)) { }
+            else if (CheckRoomRarity(rarity, 85, 95, RoomType.Plot)) { }
+            //Debug.Log("rarity: " + rarity); 
+        }
     }
     public bool CheckRoomRarity(int rarity, int min, int max, RoomType roomType)
     {
@@ -54,24 +57,25 @@ public class LevelGeneration : MonoBehaviour
     {
         Room copyOfRoom = Instantiate<Room>(room);
         int newRoomRandomDoorIndex = Random.Range(0, copyOfRoom.Doors.Count);
-        Transform door = copyOfRoom.Doors[newRoomRandomDoorIndex].transform;
+        Transform doorOfCopyOfRoom = copyOfRoom.Doors[newRoomRandomDoorIndex].transform;
         int doorsRandomIndex = Random.Range(0, _doors.Count);
         Vector3 directionA = -transform.TransformVector(_doors[doorsRandomIndex].transform.forward);
-        Vector3 directionB = transform.TransformVector(door.forward);
+        Vector3 directionB = transform.TransformVector(doorOfCopyOfRoom.forward);
         float angle = Vector3.Angle(directionA, directionB);
         float sideAngle = Vector3.SignedAngle(directionA, directionB, Vector3.up);
         
         if (sideAngle < 0) { sideAngle += 360; }
         float angleToTurn = 360 - sideAngle;
         copyOfRoom.transform.Rotate(Vector3.up, angleToTurn);
-
         copyOfRoom.transform.position = _doors[doorsRandomIndex].transform.position;
-        copyOfRoom.transform.position += copyOfRoom.transform.position - door.position;
+        copyOfRoom.transform.position += copyOfRoom.transform.position - doorOfCopyOfRoom.position;
+        foreach (var doors in copyOfRoom.Doors)
+        {
+            doors.Init(_bus);
+        }
         copyOfRoom.Doors.RemoveAt(newRoomRandomDoorIndex);
+        _doors[doorsRandomIndex].gameObject.SetActive(false);
         _doors.RemoveAt(doorsRandomIndex);
-        _doors.AddRange(copyOfRoom.Doors.FindAll(x => x != door));
-        qwer++;
-        if (qwer >= 12) return;
-        GenerateRoom();
+        _doors.AddRange(copyOfRoom.Doors.FindAll(x => x != doorOfCopyOfRoom));
     }
 }
