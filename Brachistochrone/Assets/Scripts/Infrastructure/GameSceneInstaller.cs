@@ -8,38 +8,38 @@ public class GameSceneInstaller : MonoInstaller
 {
     [SerializeField] private Language _language;
     [SerializeField] private AudioHandler _audioHandler;
+    public int _sceneBorders = 200;
+    [SerializeField] private Room _startMineRoom;
 
     public override void InstallBindings()
     {
+        Container.BindInstance(_sceneBorders).WithId("SceneBorders");
         BindGrid();
         BindLanguage();
         BindAudioHandler();
         BindEventBus();
         BindInputSystem();
-
     }
-
-
-
-    public override void Start()
+    public void Awake()
     {
-        Container.Resolve<SceneGrid>().CreateNode(200,200);
+        SceneGrid grid = Container.Resolve<SceneGrid>();
+        grid.CreateNode(_sceneBorders, _sceneBorders);
+        grid.GetNode(grid.TranscodeNode(_startMineRoom.transform.position), out Node node);
+        node.IsBusy = true; node.DoorUpBusy = true;
         Container.Resolve<InputSystem_Actions>().Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        StartCoroutine(QWERTYU());
     }
-    private IEnumerator QWERTYU()
-    {
-        yield return new WaitForSeconds(3f);
-        int randomX = UnityEngine.Random.Range(0, 4000);
-        int resultX = UnityEngine.Mathf.FloorToInt(randomX / 20);
-        int randomZ = UnityEngine.Random.Range(0, 4000);
-        int resultZ = UnityEngine.Mathf.FloorToInt(randomZ / 20);
-        Debug.Log($"randomX: {randomX}, randomZ: {randomZ}");
-        Container.Resolve<SceneGrid>().GetNode($"x{resultX}z{resultZ}");
-
-    }
+    //private IEnumerator QWERTYU()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    int randomX = UnityEngine.Random.Range(0, 4000);
+    //    int resultX = UnityEngine.Mathf.FloorToInt(randomX / 20);
+    //    int randomZ = UnityEngine.Random.Range(0, 4000);
+    //    int resultZ = UnityEngine.Mathf.FloorToInt(randomZ / 20);
+    //    Debug.Log($"randomX: {randomX}, randomZ: {randomZ}");
+    //    //Container.Resolve<SceneGrid>().GetNode($"x{resultX}z{resultZ}");
+    //}
     private void BindGrid()
     {
         Container

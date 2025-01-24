@@ -1,81 +1,93 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Zenject;
+using Random = UnityEngine.Random;
+using Unity.VisualScripting;
 
 public class LevelGeneration : MonoBehaviour
 {
-    private EventBus _bus;
-    [SerializeField] private Door _startRoomDoor;
+    private SceneGrid _grid;
+    private Vector3 _nextNodeVector;
+    [SerializeField] private Room _startMineRoom;
     [SerializeField] private List<Room> _rooms;
-    [SerializeField] private List<Door> _doors = new List<Door>();
+    [SerializeField] private List<Transform> _roomEnds;
 
-    [Inject] private void Construct(EventBus bus)
+    [Inject] private void Construct(SceneGrid grid)
     {
-        _bus = bus;
-        _bus.DoorOpened += GenerateRoom;
-        _startRoomDoor.Init(_bus);
-        _doors.Add(_startRoomDoor);
-        //GenerateRoom();
+        _grid = grid;
     }
-
-    private void GenerateRoom()
+    private void Start()
     {
-        for (int i = 0; i < 2; i++)
-        {
-            var rarity = Random.Range(0, 85);
-            if (CheckRoomRarity(rarity, 0, 85, RoomType.Common)) { }
-            else if (CheckRoomRarity(rarity, 85, 95, RoomType.Rare)) { }
-            else if (CheckRoomRarity(rarity, 85, 95, RoomType.Plot)) { }
-            //Debug.Log("rarity: " + rarity); 
-        }
+        _roomEnds.Add(_startMineRoom.RoomEnds[0]);
+        _nextNodeVector = _startMineRoom.RoomEnds[0].position + _startMineRoom.RoomEnds[0].TransformVector(Vector3.forward * 10);
+        GenerateLevel();
     }
-    public bool CheckRoomRarity(int rarity, int min, int max, RoomType roomType)
+    private void GenerateLevel()
     {
-        if (rarity >= min && rarity <= max)
+        int i = 1;
+        do
         {
-            List<Room> roomByType = _rooms.FindAll(x => x.RoomType == roomType);
-            Checks(roomByType[Random.Range(0, roomByType.Count)]);
-            return true;
-        }
-        else
-            return false;
-    }
-    private void Checks(Room room)
-    {
-        if (_doors.Count <= 2)
-        {
-            if (room.DeadEndRoom)
-                GenerateRoom();
+            if (_grid.GetNode(_grid.TranscodeNode(_nextNodeVector), out Node nextRoomNode)/* && !nextRoomNode.IsBusy*/)
+            {
+                List<Directions> freeNeighboursDirections = _grid.GetFreeNeighbours(nextRoomNode, out List<Directions> primaryDirections);
+                if (primaryDirections.Count > 0)
+                {
+                    Debug.Log("primaryDirections.Count > 0");
+                ReGet:
+                    Room roomToSpawn = GetRandomNCorrectRoom
+                    (
+                    freeNeighboursDirections,
+                    primaryDirections.Contains(Directions.Up),
+                    primaryDirections.Contains(Directions.Down),
+                    primaryDirections.Contains(Directions.Left),
+                    primaryDirections.Contains(Directions.Right)
+                    );
+                    //if (_roomEnds.Count <= 2)
+                    //    if (roomToSpawn.DeadEndRoom)
+                    //        goto ReGet;
+                    Debug.Log("room spawn");
+                    var room = GameObject.Instantiate(roomToSpawn);
+                    i++;
+                    room.transform.position += _nextNodeVector;
+                    _roomEnds.AddRange(room.RoomEnds);
+                    _nextNodeVector = _roomEnds[0].localPosition + _roomEnds[0].TransformVector(Vector3.forward * 10);
+                    _roomEnds.RemoveAt(0);
+                }
+            }
             else
-                CreateRoom(room);
-        }
-        else
-            CreateRoom(room);
+            {
+                _nextNodeVector = _roomEnds[0].localPosition + _roomEnds[0].TransformVector(Vector3.forward * 10);
+                _roomEnds.RemoveAt(0);
+            }
+        } 
+        while (i < 2000);
     }
-
-    private void CreateRoom(Room room)
+    private Room GetRandomNCorrectRoom(List<Directions> freeNeighboursDirections, bool isDoorOnUp, bool isDoorOnDown, bool isDoorOnLeft, bool isDoorOnRight)
     {
-        Room copyOfRoom = Instantiate<Room>(room);
-        int newRoomRandomDoorIndex = Random.Range(0, copyOfRoom.Doors.Count);
-        Transform doorOfCopyOfRoom = copyOfRoom.Doors[newRoomRandomDoorIndex].transform;
-        int doorsRandomIndex = Random.Range(0, _doors.Count);
-        Vector3 directionA = -transform.TransformVector(_doors[doorsRandomIndex].transform.forward);
-        Vector3 directionB = transform.TransformVector(doorOfCopyOfRoom.forward);
-        float angle = Vector3.Angle(directionA, directionB);
-        float sideAngle = Vector3.SignedAngle(directionA, directionB, Vector3.up);
-        
-        if (sideAngle < 0) { sideAngle += 360; }
-        float angleToTurn = 360 - sideAngle;
-        copyOfRoom.transform.Rotate(Vector3.up, angleToTurn);
-        copyOfRoom.transform.position = _doors[doorsRandomIndex].transform.position;
-        copyOfRoom.transform.position += copyOfRoom.transform.position - doorOfCopyOfRoom.position;
-        foreach (var doors in copyOfRoom.Doors)
+        Debug.Log("GetRandomRoom");
+        List<Room> tempRooms = new List<Room>();
+        var randomRes = 0;
+        foreach (Directions direction in freeNeighboursDirections)
+        switch (direction)
         {
-            doors.Init(_bus);
+            case Directions.Up:
+                randomRes = UnityEngine.Random.Range(0,1);
+                isDoorOnUp = (randomRes == 1)? true : false;
+                break;
+            case Directions.Down:
+                randomRes = UnityEngine.Random.Range(0, 1);
+                isDoorOnDown = (randomRes == 1) ? true : false;
+                break;
+            case Directions.Left:
+                randomRes = UnityEngine.Random.Range(0, 1);
+                isDoorOnLeft = (randomRes == 1) ? true : false;
+                break;
+            case Directions.Right:
+                randomRes = UnityEngine.Random.Range(0, 1);
+                    isDoorOnRight = (randomRes == 1) ? true : false;
+                break;
         }
-        copyOfRoom.Doors.RemoveAt(newRoomRandomDoorIndex);
-        _doors[doorsRandomIndex].gameObject.SetActive(false);
-        _doors.RemoveAt(doorsRandomIndex);
-        _doors.AddRange(copyOfRoom.Doors.FindAll(x => x != doorOfCopyOfRoom));
+        tempRooms.AddRange(_rooms.FindAll(x => x.Up == isDoorOnUp && x.Down == isDoorOnDown && x.Left == isDoorOnLeft && x.Right == isDoorOnRight));
+        return tempRooms[UnityEngine.Random.Range(0, tempRooms.Count)];
     }
 }
