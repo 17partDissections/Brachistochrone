@@ -1,14 +1,12 @@
 
 using Zenject;
 using UnityEngine;
-using InputSystem;
 
 public class TestSceneInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
         BindEventBus();
-        BindInputSystem();
 
     }
 
@@ -16,7 +14,6 @@ public class TestSceneInstaller : MonoInstaller
 
     public override void Start()
     {
-        Container.Resolve<InputSystem_Actions>().Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -28,13 +25,5 @@ public class TestSceneInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
-    }
-    private void BindInputSystem()
-    {
-        Container
-            .Bind<InputSystem_Actions>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
     }
 }

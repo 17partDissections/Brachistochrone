@@ -1,0 +1,22 @@
+		//MainMenu.scene
+
+	//Menu&PauseMenu buttons
+PlayButton=<u>И</U>грать
+OptionsButton=<u>Н</U>астройки
+AboutGameButton=<u>О</U>б игре
+CloseButton=<u>З</U>акрыть
+ReturnButton=<u>В</U>ернуться в меню
+ExitButton=<u>В</U>ыход
+YesButton=<u>Д</U>а
+NoButton=<u>Н</U>ет
+
+	//'Options' window labels
+OptionsWindowName=Настройки
+Resolution=Разрешение
+Language=Язык
+
+	//'About' window labels
+AboutGameWindowName=Об игре
+
+	//'Exit' window labels
+ExitButtonWindowName=Вы уверены?

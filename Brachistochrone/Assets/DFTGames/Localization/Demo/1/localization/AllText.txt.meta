@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 91b724b9372f08349b08e7d95f918350
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/AllText.txt
+  uploadId: 720982

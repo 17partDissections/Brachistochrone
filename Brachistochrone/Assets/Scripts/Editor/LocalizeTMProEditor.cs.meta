@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 130f5fce4d3a9d94783777bc1069bd41
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Scripts/Editor/LocalizeTMProEditor.cs
+  uploadId: 720982

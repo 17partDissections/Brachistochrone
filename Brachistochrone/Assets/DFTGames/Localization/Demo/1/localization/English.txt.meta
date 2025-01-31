@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb3c94587a5a5234eb85f052b582749e
+timeCreated: 1484216910
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/English.txt
+  uploadId: 720982

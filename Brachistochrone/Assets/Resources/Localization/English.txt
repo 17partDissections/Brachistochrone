@@ -1,0 +1,23 @@
+		//MainMenu.scene
+
+	//Menu&PauseMenu buttons
+PlayButton	<u>P</U>lay
+OptionsButton	<u>O</U>ptions
+AboutGameButton	<u>A</U>bout game
+CloseButton	<u>C</U>lose
+ReturnButton	<u>R</U>eturn to main menu
+ExitButton	<u>E</U>xit
+YesButton	<u>Y</U>es
+NoButton	<u>N</U>o
+
+	//'Options' window labels
+OptionsWindowName	Options
+Resolution	Resolution
+Language	Language
+
+	//'About' window labels
+AboutGameWindowName	About
+
+	//'Exit' window labels
+ExitButtonWindowName	Are you sure?
+

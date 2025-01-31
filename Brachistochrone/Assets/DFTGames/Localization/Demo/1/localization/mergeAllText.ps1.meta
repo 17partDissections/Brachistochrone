@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 12f0d6b2bf046ed40a517bf58a3e5852
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/mergeAllText.ps1
+  uploadId: 720982

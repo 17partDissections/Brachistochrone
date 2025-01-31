@@ -1,0 +1,4 @@
+title=Раз два три четыре
+play=Играть
+opts=Impostazioni
+info=Informazioni

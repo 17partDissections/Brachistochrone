@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6663d2aed51fae24c935e86b9a754522
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/Fonts/ZenMaruGothic-Regular
+    SDF.asset
+  uploadId: 720982

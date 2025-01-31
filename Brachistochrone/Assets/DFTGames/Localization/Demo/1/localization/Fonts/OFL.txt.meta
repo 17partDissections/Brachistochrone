@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 78e6d5e39d7232842b75ede317ec8934
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/Fonts/OFL.txt
+  uploadId: 720982

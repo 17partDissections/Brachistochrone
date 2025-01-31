@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 7d4f4ca7268b12749a25f9943d74d2d7
+timeCreated: 1484212045
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Scripts/Localize.cs
+  uploadId: 720982

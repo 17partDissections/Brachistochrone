@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e1556a33c2652e646bec72d284ead4d5
+timeCreated: 1484216910
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Resources/localization/Japanese.txt
+  uploadId: 720982

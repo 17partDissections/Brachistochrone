@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b467a303c2468214484dbee959e731c9
+timeCreated: 1484221609
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 102074
+  packageName: DFT Games Localization Solution
+  packageVersion: 1.0.0
+  assetPath: Assets/DFTGames/Localization/Demo/Scenes/Demo.unity
+  uploadId: 720982

@@ -23,8 +23,8 @@ public class SceneGrid
     }
     public string TranscodeNode(Vector3 vector)
     {
-        var x = Mathf.FloorToInt(vector.x / 20);
-        var z = Mathf.FloorToInt(vector.z / 20);
+        var x = Mathf.Abs(Mathf.FloorToInt(vector.x / 20));
+        var z = Mathf.Abs(Mathf.FloorToInt(vector.z / 20));
         Debug.Log($"x{x}z{z}");
         return ($"x{x}z{z}");
     }
@@ -63,22 +63,22 @@ public class SceneGrid
         int z = Int32.Parse(stringZ);
         if (z >= 1 && GetNode($"x{x}z{z - 1}", out Node outnodeDownZ))
         {
-            if (outnodeDownZ.IsBusy) nodes.Add(Directions.Down);
+            if (!outnodeDownZ.IsBusy) nodes.Add(Directions.Down);
             else if(outnodeDownZ.DoorUpBusy) primaryDirections.Add(Directions.Down);
         }
         if ((z + 1) <= _sceneBorders && GetNode($"x{x}z{z + 1}", out Node outnodeUpZ))
         {
-            if (outnodeUpZ.IsBusy) nodes.Add(Directions.Up);
+            if (!outnodeUpZ.IsBusy) nodes.Add(Directions.Up);
             else if (outnodeUpZ.DoorDownBusy) primaryDirections.Add(Directions.Up);
         }
         if ((x + 1) <= _sceneBorders && GetNode($"x{x + 1}z{z}", out Node outnodeRightX))
         {
-            if (outnodeRightX.IsBusy) nodes.Add(Directions.Right);
+            if (!outnodeRightX.IsBusy) nodes.Add(Directions.Right);
             else if (outnodeRightX.DoorLeftBusy) primaryDirections.Add(Directions.Right);
         }
         if (x >= 1 && GetNode($"x{x - 1}z{z}", out Node outnodeLeftX))
         {
-            if (outnodeLeftX.IsBusy) nodes.Add(Directions.Left);
+            if (!outnodeLeftX.IsBusy) nodes.Add(Directions.Left);
             else if (outnodeLeftX.DoorRightBusy) primaryDirections.Add(Directions.Left);
         }
         return nodes;

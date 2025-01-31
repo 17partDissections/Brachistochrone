@@ -1,7 +1,6 @@
 using System;
 using Zenject;
 using UnityEngine;
-using InputSystem;
 using System.Collections;
 
 public class GameSceneInstaller : MonoInstaller
@@ -18,7 +17,6 @@ public class GameSceneInstaller : MonoInstaller
         BindLanguage();
         BindAudioHandler();
         BindEventBus();
-        BindInputSystem();
     }
     public void Awake()
     {
@@ -26,9 +24,8 @@ public class GameSceneInstaller : MonoInstaller
         grid.CreateNode(_sceneBorders, _sceneBorders);
         grid.GetNode(grid.TranscodeNode(_startMineRoom.transform.position), out Node node);
         node.IsBusy = true; node.DoorUpBusy = true;
-        Container.Resolve<InputSystem_Actions>().Enable();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
     //private IEnumerator QWERTYU()
     //{
@@ -68,14 +65,6 @@ public class GameSceneInstaller : MonoInstaller
     {
         Container
             .Bind<EventBus>()
-            .FromNew()
-            .AsSingle()
-            .NonLazy();
-    }
-    private void BindInputSystem()
-    {
-        Container
-            .Bind<InputSystem_Actions>()
             .FromNew()
             .AsSingle()
             .NonLazy();

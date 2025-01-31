@@ -27,13 +27,13 @@ public class LevelGeneration : MonoBehaviour
         int i = 1;
         do
         {
-            if (_grid.GetNode(_grid.TranscodeNode(_nextNodeVector), out Node nextRoomNode)/* && !nextRoomNode.IsBusy*/)
+            if (_grid.GetNode(_grid.TranscodeNode(_nextNodeVector), out Node nextRoomNode) && !nextRoomNode.IsBusy)
             {
                 List<Directions> freeNeighboursDirections = _grid.GetFreeNeighbours(nextRoomNode, out List<Directions> primaryDirections);
                 if (primaryDirections.Count > 0)
                 {
                     Debug.Log("primaryDirections.Count > 0");
-                ReGet:
+                    //ReGet:
                     Room roomToSpawn = GetRandomNCorrectRoom
                     (
                     freeNeighboursDirections,
@@ -50,44 +50,52 @@ public class LevelGeneration : MonoBehaviour
                     i++;
                     room.transform.position += _nextNodeVector;
                     _roomEnds.AddRange(room.RoomEnds);
-                    _nextNodeVector = _roomEnds[0].localPosition + _roomEnds[0].TransformVector(Vector3.forward * 10);
-                    _roomEnds.RemoveAt(0);
+                    //_roomEnds.RemoveAt(0);
+                    nextRoomNode.IsBusy = true;
+                    nextRoomNode.DoorUpBusy = room.Up;
+                    nextRoomNode.DoorDownBusy = room.Down;
+                    nextRoomNode.DoorLeftBusy = room.Left;
+                    nextRoomNode.DoorRightBusy = room.Right;
+                    _nextNodeVector = _roomEnds[0].position + _roomEnds[0].TransformVector(Vector3.forward).normalized * 10;
                 }
             }
             else
             {
-                _nextNodeVector = _roomEnds[0].localPosition + _roomEnds[0].TransformVector(Vector3.forward * 10);
+                _nextNodeVector = _roomEnds[0].position + _roomEnds[0].TransformVector(Vector3.forward).normalized * 10;
                 _roomEnds.RemoveAt(0);
             }
-        } 
-        while (i < 2000);
+        }
+        while (i < 100 || _roomEnds.Count == 0);
     }
-    private Room GetRandomNCorrectRoom(List<Directions> freeNeighboursDirections, bool isDoorOnUp, bool isDoorOnDown, bool isDoorOnLeft, bool isDoorOnRight)
+    private Room GetRandomNCorrectRoom(List<Directions> freeNeighboursDirections, bool isPrimaryUpDoor, bool isPrimaryDownDoor, bool isPrimaryLeftDoor, bool isPrimaryRightDoor)
     {
-        Debug.Log("GetRandomRoom");
+        bool savedPrimaryUpDoor, savedPrimaryDownDoor, savedPrimaryLeftDoor, savedPrimaryRightDoor;
+        savedPrimaryUpDoor = isPrimaryUpDoor; savedPrimaryDownDoor = isPrimaryDownDoor; savedPrimaryLeftDoor = isPrimaryLeftDoor; savedPrimaryRightDoor = isPrimaryRightDoor;
         List<Room> tempRooms = new List<Room>();
         var randomRes = 0;
         foreach (Directions direction in freeNeighboursDirections)
         switch (direction)
         {
             case Directions.Up:
-                randomRes = UnityEngine.Random.Range(0,1);
-                isDoorOnUp = (randomRes == 1)? true : false;
+                randomRes = UnityEngine.Random.Range(0, 2);
+                isPrimaryUpDoor = (randomRes == 1)? true : false;
                 break;
             case Directions.Down:
-                randomRes = UnityEngine.Random.Range(0, 1);
-                isDoorOnDown = (randomRes == 1) ? true : false;
+                randomRes = UnityEngine.Random.Range(0, 2);
+                isPrimaryDownDoor = (randomRes == 1) ? true : false;
                 break;
             case Directions.Left:
-                randomRes = UnityEngine.Random.Range(0, 1);
-                isDoorOnLeft = (randomRes == 1) ? true : false;
+                randomRes = UnityEngine.Random.Range(0, 2);
+                isPrimaryLeftDoor = (randomRes == 1) ? true : false;
                 break;
             case Directions.Right:
-                randomRes = UnityEngine.Random.Range(0, 1);
-                    isDoorOnRight = (randomRes == 1) ? true : false;
+                randomRes = UnityEngine.Random.Range(0, 2);
+                    isPrimaryRightDoor = (randomRes == 1) ? true : false;
                 break;
         }
-        tempRooms.AddRange(_rooms.FindAll(x => x.Up == isDoorOnUp && x.Down == isDoorOnDown && x.Left == isDoorOnLeft && x.Right == isDoorOnRight));
+        tempRooms.AddRange(_rooms.FindAll(x => x.Up == isPrimaryUpDoor && x.Down == isPrimaryDownDoor && x.Left == isPrimaryLeftDoor && x.Right == isPrimaryRightDoor));
+        //Room room = tempRooms[UnityEngine.Random.Range(0, tempRooms.Count)];
+        //room.RoomEnds.FindAll(x=>x.)
         return tempRooms[UnityEngine.Random.Range(0, tempRooms.Count)];
     }
 }
