@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2307431088976403884}
   - component: {fileID: 541673998103920289}
   - component: {fileID: 5628005867653030610}
+  - component: {fileID: 5425079663848153133}
   m_Layer: 0
   m_Name: Mine_04_2
   m_TagString: Untagged
@@ -157,6 +158,28 @@ MonoBehaviour:
   Down: 0
   MonsterSpawnTransforms: []
   ItemSpawnsPositions: []
+--- !u!64 &5425079663848153133
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929041152576191486}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 596883901118106217, guid: 79aa16d107f5e9b4fbad2b767a1130b6, type: 3}
 --- !u!1 &7485187431455645028
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class GameSceneInstaller : MonoInstaller
 {
     [SerializeField] private Language _language;
     [SerializeField] private AudioHandler _audioHandler;
-    public int _sceneBorders = 200;
+    public int _sceneBorders = 50;
     [SerializeField] private Room _startMineRoom;
 
     public override void InstallBindings()

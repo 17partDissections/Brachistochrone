@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4055026080737739205}
   - component: {fileID: 3900202366949543453}
   - component: {fileID: 1280352886051224279}
+  - component: {fileID: -2472474396912139160}
   m_Layer: 0
   m_Name: Mine_03_3
   m_TagString: Untagged
@@ -131,6 +132,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2472474396912139160
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775822390970358530}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3543848892173213685, guid: d5cc5d8f8dd396948bc866caf99f24ef, type: 3}
 --- !u!1 &1015518269693594664
 GameObject:
   m_ObjectHideFlags: 0

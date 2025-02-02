@@ -23,9 +23,9 @@ public class SceneGrid
     }
     public string TranscodeNode(Vector3 vector)
     {
-        var x = Mathf.Abs(Mathf.FloorToInt(vector.x / 20));
-        var z = Mathf.Abs(Mathf.FloorToInt(vector.z / 20));
-        Debug.Log($"x{x}z{z}");
+        var x = Mathf.Abs(Mathf.RoundToInt(vector.x / 20));
+        var z = Mathf.Abs(Mathf.RoundToInt(vector.z / 20));
+        //Debug.Log($"x{x}z{z}");
         return ($"x{x}z{z}");
     }
     /// <summary>
