@@ -13,21 +13,22 @@ public class SceneGrid
     }
     public void CreateNode(int x, int z)
     {
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i <= x; i++)
         {
-            for(int j = 0; j < z; j++)
+            for(int j = 0; j <= z; j++)
             {
                 Dictionary.Add($"x{i}z{j}", new Node($"x{i}z{j}"));
             }
         }
     }
-    public string TranscodeNode(Vector3 vector)
+    public string TranscodeVectorToNode(Vector3 vector)
     {
         var x = Mathf.Abs(Mathf.RoundToInt(vector.x / 20));
         var z = Mathf.Abs(Mathf.RoundToInt(vector.z / 20));
         //Debug.Log($"x{x}z{z}");
         return ($"x{x}z{z}");
     }
+   
     /// <summary>
     /// 
     /// </summary>
@@ -58,7 +59,7 @@ public class SceneGrid
         {
             if(stringIndex == 'z') { flag = true; continue; }
             if (flag) stringZ += stringIndex;
-        }                                                       //x10,z15
+        }
         int x = Int32.Parse(stringX);
         int z = Int32.Parse(stringZ);
         if (z >= 1 && GetNode($"x{x}z{z - 1}", out Node outnodeDownZ))
@@ -83,13 +84,50 @@ public class SceneGrid
         }
         return nodes;
     }
-    
+    public List<Node> GetBusyNeighboursNodes(Node node)
+    {
+        List<Node> nodes = new List<Node>();
+        string stringX = "";
+        string stringZ = "";
+        foreach (var stringIndex in node.Key)
+        {
+            if (stringIndex == 'x') continue;
+            else if (stringIndex == 'z') break;
+            else stringX += stringIndex;
+        }
+        bool flag = false;
+        foreach (var stringIndex in node.Key)
+        {
+            if (stringIndex == 'z') { flag = true; continue; }
+            if (flag) stringZ += stringIndex;
+        }
+        int x = Int32.Parse(stringX);
+        int z = Int32.Parse(stringZ);
+        if (z >= 1 && GetNode($"x{x}z{z - 1}", out Node outnodeDownZ))
+        {
+            if (outnodeDownZ.IsBusy) nodes.Add(outnodeDownZ);
+        }
+        if ((z + 1) <= _sceneBorders && GetNode($"x{x}z{z + 1}", out Node outnodeUpZ))
+        {
+            if (outnodeUpZ.IsBusy) nodes.Add(outnodeUpZ);
+        }
+        if ((x + 1) <= _sceneBorders && GetNode($"x{x + 1}z{z}", out Node outnodeRightX))
+        {
+            if (outnodeRightX.IsBusy) nodes.Add(outnodeRightX);
+        }
+        if (x >= 1 && GetNode($"x{x - 1}z{z}", out Node outnodeLeftX))
+        {
+            if (outnodeLeftX.IsBusy) nodes.Add(outnodeLeftX);
+        }
+        return nodes;
+    }
 }
 
 public class Node
 {
     public string Key;
     public bool IsBusy = false;
+    public Room Room;
     public bool DoorRightBusy, DoorLeftBusy, DoorUpBusy, DoorDownBusy;
     public Node(string key)
     {
@@ -97,4 +135,3 @@ public class Node
     }
 }
 public enum Directions { Up, Right, Down, Left }
-
