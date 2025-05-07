@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -14,16 +16,21 @@ namespace Q17pD.Brachistochrone.Player
         [SerializeField] private List<Sprite> _pictureScreamers;
         private EventBus _bus;
         private AudioHandler _audioHandler;
+        private bool _hunt;
 
         [Inject] private void Construct(EventBus bus, AudioHandler audioHandler)
         {
             _bus = bus;
+            _bus.OnHuntEnded += EndHunt;
             _audioHandler = audioHandler;
             Sleep = new WaitForSeconds(_playerFearSleepTime);
         }
+
+        private void EndHunt() { _hunt = false; }
+
         private IEnumerator Start()
         {
-            while (true)
+            while (_hunt == false)
             {
                 yield return Sleep;
                 CurrentPlayerFear++;
@@ -33,11 +40,12 @@ namespace Q17pD.Brachistochrone.Player
 
                     if (CurrentPlayerFear == 100)
                     {
-                        _bus.FearFullEvent?.Invoke();
+                        _bus.OnHuntStarted?.Invoke();
                         CurrentPlayerFear = 0;
+                        _hunt = true;
                     }
                     else
-                        _bus.FearAdditionalEvent?.Invoke();
+                        _bus.OnFearAdditionalEvent?.Invoke();
                 }
             }
         }

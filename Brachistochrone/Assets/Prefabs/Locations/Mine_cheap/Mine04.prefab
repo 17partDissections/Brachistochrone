@@ -1596,7 +1596,7 @@ GameObject:
   - component: {fileID: 604428973435488651}
   - component: {fileID: 327960457467976847}
   - component: {fileID: 8455112789818120377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1991,6 +1991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4571733683628377539}
   - component: {fileID: 6380280050431098628}
+  - component: {fileID: 6856891538824587665}
   m_Layer: 0
   m_Name: Mine04
   m_TagString: Untagged
@@ -2059,6 +2060,27 @@ MonoBehaviour:
   MonsterSpawnTransforms:
   - {fileID: 5248540037941501048}
   ItemSpawnsPositions: []
+--- !u!65 &6856891538824587665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418073742274924603}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 3.5, z: 19.999996}
+  m_Center: {x: 0, y: 1.75, z: 0}
 --- !u!1 &7577976164752288802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,7 +2093,7 @@ GameObject:
   - component: {fileID: 3737704486020778696}
   - component: {fileID: 6398608963395868303}
   - component: {fileID: 3116174896295792235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2288,7 +2310,7 @@ GameObject:
   - component: {fileID: 6698415182100463004}
   - component: {fileID: 3860532128921353162}
   - component: {fileID: 2070272793827953333}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2678,7 +2700,7 @@ GameObject:
   - component: {fileID: 3130408140042023498}
   - component: {fileID: 6766398438463174572}
   - component: {fileID: 362433223425482128}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -47,6 +47,7 @@ namespace Q17pD.Brachistochrone
         public void OnPointerDown(PointerEventData eventData)
         {
             _pointerStorage.ItemSlot = this;
+            Debug.Log("onpointerdown:");
         }
 
         public void OnDrop(PointerEventData eventData)

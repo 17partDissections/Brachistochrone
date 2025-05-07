@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 8477438183339827019}
   - component: {fileID: 1197531811247024083}
   - component: {fileID: 3615280911499950108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,6 +1521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1518175183853027111}
   - component: {fileID: 5882416266905527061}
+  - component: {fileID: 8668063668742450878}
   m_Layer: 0
   m_Name: Mine03_1
   m_TagString: Untagged
@@ -1587,6 +1588,27 @@ MonoBehaviour:
   - {fileID: 507275168135422066}
   - {fileID: 7035938068336822654}
   ItemSpawnsPositions: []
+--- !u!65 &8668063668742450878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5063588200533107543}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.000001, y: 3.5, z: 20}
+  m_Center: {x: -4, y: 1.75, z: 0}
 --- !u!1 &5539262299765529861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2189,7 @@ GameObject:
   - component: {fileID: 2714977603888293009}
   - component: {fileID: 3466200061753424019}
   - component: {fileID: 2312145936499351365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2297,7 @@ GameObject:
   - component: {fileID: 8418246140645292267}
   - component: {fileID: 6031603894286324786}
   - component: {fileID: 1154378284328320613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

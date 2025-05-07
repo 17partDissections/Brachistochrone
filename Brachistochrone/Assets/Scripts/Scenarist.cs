@@ -19,15 +19,14 @@ namespace Q17pD.Brachistochrone
             _skinny = skinny;
             _sceneGrid = grid;
             _playerObject = playerMovement.gameObject;
-            eventBus.FearFullEvent += SpawnMonster;
-            //Debug.Log("Scenarist is enabled. Skinny = " + _skinny);
+            eventBus.OnHuntStarted += SpawnMonster;
         }
         private void SpawnMonster()
         {
-            Room room = GetPlayerNeighbourRoom();
-            _skinny.gameObject.SetActive(true);
-            _skinny.transform.position = room.MonsterSpawnTransforms[Random.Range(0, room.MonsterSpawnTransforms.Count)].position;
-            _skinny.Coroutine = _skinny.StartCoroutine(_skinny.ChaseCoroutine());
+            //Room room = GetPlayerNeighbourRoom();
+            //_skinny.gameObject.SetActive(true);
+            //_skinny.Agent.Warp(room.MonsterSpawnTransforms[Random.Range(0, room.MonsterSpawnTransforms.Count)].position);
+            //_skinny.Coroutine = _skinny.StartCoroutine(_skinny.ChaseCoroutine());
         }
         private Room GetPlayerNeighbourRoom()
         {

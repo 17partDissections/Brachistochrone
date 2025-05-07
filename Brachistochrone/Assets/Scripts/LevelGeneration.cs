@@ -5,8 +5,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
 using System;
 using Q17pD.Brachistochrone;
-using Unity.VisualScripting;
-using UnityEngine.Rendering;
+using Unity.AI.Navigation;
 
 public class LevelGeneration : MonoBehaviour
 {
@@ -17,8 +16,8 @@ public class LevelGeneration : MonoBehaviour
     private List<Transform> _roomEnds = new List<Transform>();
     private List<RoomSaveData> _rooms = new List<RoomSaveData>();
     private int _roomsCount;
+    [SerializeField] private NavMeshSurface _navMeshSurface;
     [InjectOptional] private int _sceneBroders;
-
     private MasterSave _masterSave;
 
 
@@ -58,6 +57,7 @@ public class LevelGeneration : MonoBehaviour
                     room.transform.position = _nextNodeVector;
                     room.transform.position = new Vector3(room.transform.position.x, y, room.transform.position.z);
                     _rooms.Add(new RoomSaveData(roomToSpawn.name, room.transform.position));
+                    room.transform.SetParent(_navMeshSurface.transform);
                     _roomEnds.AddRange(room.RoomEnds);
                     nextRoomNode.Room = room;
                     nextRoomNode.IsBusy = true;
@@ -79,13 +79,10 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
             _masterSave.SaveData.RoomSaveData = _rooms.ToArray();
-            //if (_roomsCount > 300) { break; }
         }
         while (_roomEnds.Count != 0);
-        Debug.Log("i = " + _roomsCount);
         if (_roomsCount < Mathf.RoundToInt(Mathf.Pow(_sceneBroders, 2)*0.4f)) SceneManager.LoadScene("GameScene");
-        
-
+        _navMeshSurface.BuildNavMesh();
     }
     private Room GetRandomNCorrectRoom(List<Directions> freeNeighboursDirections, bool isPrimaryUpDoor, bool isPrimaryDownDoor, bool isPrimaryLeftDoor, bool isPrimaryRightDoor)
     {

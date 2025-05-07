@@ -11,21 +11,21 @@ namespace Q17pD.Brachistochrone.Player
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Floor"))
+            if (other.gameObject.layer == 7) //should be Floor layer
             {
                 _playerMovement.Grounded = true;
             }
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Floor"))
+            if (other.gameObject.layer == 7) //should be Floor layer
             {
                 _playerMovement.Grounded = false;
             }
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Floor"))
+            if (other.gameObject.layer == 7) //should be Floor layer
             {
                 _playerMovement.Grounded = true;
             }

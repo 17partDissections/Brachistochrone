@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8259856940843761271}
   - component: {fileID: 6169463700669982326}
   - component: {fileID: 1769318844246678973}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,7 +1443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2834370374408688180
 Transform:
   m_ObjectHideFlags: 0
@@ -1472,9 +1472,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5422974199928992782}
   - component: {fileID: 1496254549422744778}
+  - component: {fileID: 5494239468229437583}
   m_Layer: 0
   m_Name: Mine01_DeadEnd_01_1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1528,3 +1529,24 @@ MonoBehaviour:
   - {fileID: 4299719484064545570}
   - {fileID: 3198936830958596508}
   ItemSpawnsPositions: []
+--- !u!65 &5494239468229437583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958384460616262349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3, y: 3.5, z: 20}
+  m_Center: {x: 0, y: 1.75, z: 0}

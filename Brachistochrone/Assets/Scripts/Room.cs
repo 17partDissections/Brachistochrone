@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() != null) { _isPlayerInRoom = false; }
-        else if (other.TryGetComponent<Skinny>(out Skinny skinny)) { if(!_isPlayerInRoom) skinny.CheckChaseStatus(); }
+        else if (other.TryGetComponent<Skinny>(out Skinny skinny)) { if(!_isPlayerInRoom) /*skinny.CheckChaseStatus()*/; }
     }
 }
 public enum RoomType

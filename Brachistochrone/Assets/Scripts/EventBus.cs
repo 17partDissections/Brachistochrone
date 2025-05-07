@@ -2,10 +2,9 @@ using System;
 
 public class EventBus
 {
-    public Action DoorOpened;
-    public Action ChaseEvent;
-
     //PlayerSanity actions
-    public Action FearAdditionalEvent;
-    public Action FearFullEvent;
+    public Action OnFearAdditionalEvent;
+    public Action OnHuntStarted;
+
+    public Action OnHuntEnded;
 }

@@ -1055,7 +1055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7427292946854804784
 Transform:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 7020990904829361872}
   - component: {fileID: 4392668991981915585}
   - component: {fileID: 6851875206149835198}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,6 +1192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4976854859348717777}
   - component: {fileID: 7701563215999822153}
+  - component: {fileID: 6866921057630102929}
   m_Layer: 0
   m_Name: Mine01_DeadEnd_02_3
   m_TagString: Untagged
@@ -1207,7 +1208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8636628425054668722}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1223,7 +1224,7 @@ Transform:
   - {fileID: 7323567007699495239}
   - {fileID: 4017383453266571052}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &7701563215999822153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,6 +1248,27 @@ MonoBehaviour:
   MonsterSpawnTransforms:
   - {fileID: 9098815174879050202}
   ItemSpawnsPositions: []
+--- !u!65 &6866921057630102929
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636628425054668722}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3, y: 3.5, z: 20}
+  m_Center: {x: 0, y: 1.75, z: 0}
 --- !u!1 &8733502008292121701
 GameObject:
   m_ObjectHideFlags: 0
